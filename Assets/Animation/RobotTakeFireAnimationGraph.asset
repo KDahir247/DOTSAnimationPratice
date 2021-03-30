@@ -1,0 +1,367 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c7eecbc6a15bd448d8df8b7fcb207c, type: 3}
+  m_Name: RobotTakeFireAnimationGraph
+  m_EditorClassIdentifier: 
+  m_GraphModel:
+    id: 0
+  m_CompiledGraph:
+    DisplayName: RobotTakeFireAnimationGraph
+    Definition:
+      Assets:
+      - TypeHash: 1999326547798121539
+        NodeID:
+          Value: 5
+        PortID:
+          ID: 0
+          Index: 65535
+        Asset: {fileID: -203655887218126122, guid: a86147b2c9e3730408bcc448059b8fd7, type: 3}
+      ExposedObjects:
+      - NodeID:
+          Value: 8
+        PortID:
+          ID: 0
+          Index: 65535
+        TargetGUID:
+          NodeIDPart1: 4847559346481795121
+          NodeIDPart2: 1893309021253280697
+          PortUniqueName: Root Motion Source
+        TypeHash: 10514899759661910645
+      InputTargets: []
+      TopologyDefinition:
+        NodeCreations:
+        - TypeHash: 1877497469
+          NodeID:
+            Value: 0
+        - TypeHash: 529305041
+          NodeID:
+            Value: 1
+        - TypeHash: 250212323
+          NodeID:
+            Value: 2
+        - TypeHash: 274187519
+          NodeID:
+            Value: 3
+        - TypeHash: -1680013032
+          NodeID:
+            Value: 4
+        - TypeHash: 1982658690
+          NodeID:
+            Value: 5
+        - TypeHash: 221559073
+          NodeID:
+            Value: 6
+        - TypeHash: -1712956359
+          NodeID:
+            Value: 7
+        - TypeHash: 1713535982
+          NodeID:
+            Value: 8
+        - TypeHash: 1960725004
+          NodeID:
+            Value: 9
+        - TypeHash: -1703550566
+          NodeID:
+            Value: 10
+        Connections:
+        - SourceNodeID:
+            Value: 8
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 6
+          DestinationPortID:
+            ID: 0
+            Index: 65535
+        - SourceNodeID:
+            Value: 5
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 1
+            Index: 65535
+        - SourceNodeID:
+            Value: 9
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 3
+            Index: 65535
+        - SourceNodeID:
+            Value: 10
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 4
+            Index: 65535
+        - SourceNodeID:
+            Value: 4
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 3
+          DestinationPortID:
+            ID: 1
+            Index: 65535
+        - SourceNodeID:
+            Value: 6
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 5
+            Index: 65535
+        - SourceNodeID:
+            Value: 7
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 2
+            Index: 65535
+        - SourceNodeID:
+            Value: 0
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 3
+          DestinationPortID:
+            ID: 0
+            Index: 65535
+        - SourceNodeID:
+            Value: 0
+          SourcePortID:
+            ID: 0
+            Index: 65535
+          DestinationNodeID:
+            Value: 4
+          DestinationPortID:
+            ID: 0
+            Index: 65535
+        Values:
+        - Node:
+            Value: 9
+          Port:
+            ID: 0
+            Index: 65535
+          Type: 8
+          Value:
+            x: 1065353216
+            y: 0
+            z: 0
+            w: 0
+        - Node:
+            Value: 10
+          Port:
+            ID: 0
+            Index: 65535
+          Type: 1
+          Value:
+            x: 1
+            y: 0
+            z: 0
+            w: 0
+        Inputs:
+        - TargetNodeID:
+            Value: 0
+          TargetPortID:
+            ID: 0
+            Index: 65535
+          TypeHash: 0
+          Type: 1
+        - TargetNodeID:
+            Value: 1
+          TargetPortID:
+            ID: 0
+            Index: 65535
+          TypeHash: 0
+          Type: 3
+        - TargetNodeID:
+            Value: 2
+          TargetPortID:
+            ID: 0
+            Index: 65535
+          TypeHash: 0
+          Type: 2
+        Outputs:
+        - TargetNodeID:
+            Value: 3
+          TargetPortID:
+            ID: 0
+            Index: 65535
+          TypeHash: 6185229691878672150
+          Type: 0
+        PortArrays: []
+        States: []
+        Transitions: []
+        ConditionFragments: []
+        IsStateMachine: 0
+      TypesUsed:
+      - Unity.Animation.SimulationPhasePassThroughNode`1[[Unity.Animation.Rig, Unity.Animation,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Unity.Animation.Graph,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.SimulationPhasePassThroughNode`1[[Unity.Entities.EntityManager,
+        Unity.Entities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.SimulationPhasePassThroughNode`1[[Unity.Collections.NativeArray`1[[Unity.Animation.InputReference,
+        Unity.Animation, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.KernelPhasePassThroughNodeBufferAnimatedData, Unity.Animation.Graph,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.SimpleClipNode, Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      - Unity.Animation.SimulationPhasePassThroughNode`1[[Unity.Entities.BlobAssetReference`1[[Unity.Animation.Clip,
+        Unity.Animation, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Entities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.ObjectConverterNode`2[[System.UInt32, mscorlib, Version=4.0.0.0,
+        Culture=neutral, PublicKeyToken=b77a5c561934e089],[Unity.Animation.MotionID,
+        Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Animation.Graph, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.GetDeltaTimeNode, Unity.Animation.Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.ToUIntVariantConverterNode, Unity.Animation.Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.ToFloatVariantConverterNode, Unity.Animation.Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      - Unity.Animation.ToBoolVariantConverterNode, Unity.Animation.Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    CompiledDependencies: []
+  references:
+    version: 1
+    00000000:
+      type: {class: BaseGraphModel, ns: Unity.Animation.Model, asm: Unity.Animation.Editor}
+      data:
+        m_AssetModel: {fileID: 11400000}
+        m_GraphNodeModels:
+        - id: 1
+        - id: 2
+        m_EdgeModels: []
+        m_BadgeModels: []
+        m_GraphEdgeModels:
+        - id: 3
+        m_PolymorphicEdgeModels: []
+        m_StickyNoteModels: []
+        m_GraphStickyNoteModels: []
+        m_PlacematModels: []
+        m_GraphPlacematModels: []
+        m_GraphVariableModels: []
+        m_GraphPortalModels: []
+        m_StencilTypeName: Unity.Animation.Editor.AnimationGraphStencil, Unity.Animation.Editor,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        m_SerializedStencil:
+          id: 4
+        m_Name: RobotTakeFireAnimationGraph
+        InputComponentBindings: []
+        IsStandAloneGraph: 1
+    00000001:
+      type: {class: AnimationOutputNodeModel, ns: Unity.Animation.Editor, asm: Unity.Animation.Editor}
+      data:
+        m_Guid:
+          m_Value0: 4825378855753324974
+          m_Value1: 1182161425598519711
+        m_GraphAssetModel: {fileID: 11400000}
+        m_Position: {x: 0.99997973, y: 0.00001859665}
+        m_Color: {r: 0.776, g: 0.443, b: 0, a: 0.5}
+        m_HasUserColor: 0
+        m_Title: Output
+        m_InputConstantKeys: []
+        m_InputConstants: []
+        m_State: 0
+        m_SerializedCapabilities:
+        - .Selectable
+        - .Movable
+        - .Collapsible
+        m_PortGroupSizes: 
+        Loop: 1
+    00000002:
+      type: {class: AnimationClipNodeModel, ns: Unity.Animation.Model, asm: Unity.Animation.Editor}
+      data:
+        m_Guid:
+          m_Value0: 4847559346481795121
+          m_Value1: 1893309021253280697
+        m_GraphAssetModel: {fileID: 11400000}
+        m_Position: {x: -554.35, y: -26.232498}
+        m_Color: {r: 0.776, g: 0.443, b: 0, a: 0.5}
+        m_HasUserColor: 0
+        m_Title: Animation Clip
+        m_InputConstantKeys:
+        - Clip
+        - Root Motion Source
+        m_InputConstants:
+        - id: 5
+        - id: 6
+        m_State: 0
+        m_SerializedCapabilities:
+        - .Deletable
+        - .Droppable
+        - .Copiable
+        - .Selectable
+        - .Movable
+        - .Collapsible
+        m_PortGroupSizes: 
+        OverrideLoop: 0
+        Loop: 1
+    00000003:
+      type: {class: EdgeModel, ns: UnityEditor.GraphToolsFoundation.Overdrive.BasicModel, asm: Unity.GraphTools.Foundation.Overdrive.Editor}
+      data:
+        m_GraphAssetModel: {fileID: 11400000}
+        m_FromPortReference:
+          NodeModelGuid:
+            m_Value0: 4847559346481795121
+            m_Value1: 1893309021253280697
+          GraphAssetModel: {fileID: 11400000}
+          UniqueId: Pose
+        m_ToPortReference:
+          NodeModelGuid:
+            m_Value0: 4825378855753324974
+            m_Value1: 1182161425598519711
+          GraphAssetModel: {fileID: 11400000}
+          UniqueId: Result
+        m_EdgeControlPoints: []
+        m_EditMode: 0
+        m_EdgeLabel: 
+        m_Guid:
+          m_Value0: 5056752920836987400
+          m_Value1: 6824124075818529189
+        m_SerializedCapabilities:
+        - .Deletable
+        - .Copiable
+        - .Selectable
+        - .Movable
+    00000004:
+      type: {class: , ns: , asm: }
+    00000005:
+      type: {class: AnimationClipReferenceConstant, ns: Unity.Animation.Editor, asm: Unity.Animation.Editor}
+      data:
+        m_Value: {fileID: -203655887218126122, guid: a86147b2c9e3730408bcc448059b8fd7, type: 3}
+    00000006:
+      type: {class: MotionIDConstant, ns: Unity.Animation.Editor, asm: Unity.Animation.Editor}
+      data:
+        m_Value: {fileID: 0}

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Core_Panel" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="LHS_Panel" style="flex-grow: 0.5; align-items: flex-end; justify-content: center;">
+            <ui:Label text="Hybrid" display-tooltip-when-elided="true" name="Hybrid_Text" style="font-size: 75px; align-items: center; margin-right: 65px; margin-bottom: 400px; -unity-font-style: bold; color: rgba(224, 224, 224, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RHS_Panel" style="flex-grow: 0.5; align-items: flex-start; justify-content: center;">
+            <ui:Label text="Pure" display-tooltip-when-elided="true" name="Pure_Text" style="font-size: 75px; margin-left: 65px; margin-bottom: 400px; -unity-font-style: bold; color: rgba(224, 224, 224, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
