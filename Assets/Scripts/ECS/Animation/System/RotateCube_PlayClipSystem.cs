@@ -112,7 +112,7 @@ public class RotateCube_PlayClipSystem : SystemBase
 
 		//Connect kernel ports.
 
-		//Connect the entityNode to the deltaNode and pass the DeltaTime Input (struct) to the deltaNode. 
+		//Connect the entityNode to the deltaNode and pass the DeltaTime Input (struct) to the deltaNode.
 		set.Connect(entityNode, deltaNode, ConvertDeltaTimeToFloatNode.KernelPorts.Input);
 		//Connect the deltaNode to the ClipPlayerNode and pass the DeltaTime output (float) to the ClipPlayerNode and assign it to the DeltaTime in the ClipPlayerNode.
 		set.Connect(deltaNode, ConvertDeltaTimeToFloatNode.KernelPorts.Output, data.NodeHandle, ClipPlayerNode.KernelPorts.DeltaTime);
