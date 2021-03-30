@@ -8,10 +8,16 @@ public class PrimitiveRotationAnimationAuthoring : MonoBehaviour, IConvertGameOb
 {
     [SerializeField]
     private AnimationClip clip;
+
+    [SerializeField]
+    private AnimationCurve curve;
+
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         if (clip == null)
             return;
+
+        var animationCurve = conversionSystem.BlobAssetStore.GetAnimationCurve(curve);
 
         //conversion result on this gameObject depends on source asset. Any changes on clip will
         //trigger a reconversion on this gameObject to an entity.
@@ -25,7 +31,8 @@ public class PrimitiveRotationAnimationAuthoring : MonoBehaviour, IConvertGameOb
         //Add RotateCube_PlayClip Component to the entity with the dense clip as BlobAssetReference<Clip> param
         dstManager.AddComponentData(entity,new RotateCube_PlayClipRuntime()
         {
-            clip = denseClip
+            clip = denseClip,
+            curve = animationCurve
         });
 
         //Add DeltaTime Component to the entity with default value (float 0.0f)

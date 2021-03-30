@@ -1,6 +1,9 @@
 ﻿using Unity.Animation;
 using Unity.DataFlowGraph;
 using Unity.Entities;
+using Unity.Mathematics;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 [UpdateBefore(typeof(DefaultAnimationSystemGroup))]
 public class RotateCube_PlayClipSystem : SystemBase
@@ -8,6 +11,7 @@ public class RotateCube_PlayClipSystem : SystemBase
 	private ProcessDefaultAnimationGraph _animationGraphSystem;
 	private EndSimulationEntityCommandBufferSystem _ecbSystem;
 	private EntityQuery _animationQuery;
+	
 	protected override void OnCreate()
 	{
 		//will probably create the system since we are updating before DefaultAnimationSystemGroup and ProcessDefaultAnimationGraph update in group. 
@@ -73,6 +77,17 @@ public class RotateCube_PlayClipSystem : SystemBase
 
 				if(!_animationQuery.IsEmpty)
 					ecb.RemoveComponent(_animationQuery, typeof(RotateCube_PlayStateRuntime));
+			}).Run();
+
+
+		float pingPongTime = math.sin((float)World.Unmanaged.CurrentTime.ElapsedTime) * .5f + .5f;
+		Entities
+			.WithName("ChangeSpeed")
+			.WithoutBurst()
+			.ForEach((Entity entity, ref RotateCube_PlayStateRuntime animationState, in RotateCube_PlayClipRuntime animation) =>
+			{
+				float value = AnimationCurveEvaluator.Evaluate(pingPongTime, animation.curve);
+				_animationGraphSystem.Set.SetData(animationState.NodeHandle, ClipPlayerNode.KernelPorts.Speed, value);
 			}).Run();
 	}
 
