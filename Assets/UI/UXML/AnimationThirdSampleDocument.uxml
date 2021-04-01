@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <AnimationThirdSampleDocument style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="LHS_Panel" style="flex-grow: 0.5; align-items: flex-start; -unity-font-definition: resource(&apos;Fonts &amp; Materials/LiberationSans SDF&apos;); flex-direction: column; justify-content: flex-start;">
+            <ui:Slider picking-mode="Ignore" value="0" high-value="1" show-input-field="false" inverted="false" name="Blend_Slider" style="flex-grow: 0; flex-direction: column-reverse; align-items: center; justify-content: flex-start; color: rgba(255, 255, 255, 255); background-color: rgba(0, 0, 0, 255);">
+                <ui:Label text="BlendValue" display-tooltip-when-elided="true" enable-rich-text="true" name="Blend_Label" style="font-size: 50px; color: rgba(255, 255, 255, 255);" />
+            </ui:Slider>
+        </ui:VisualElement>
+        <ui:VisualElement name="RHS_Panel" style="flex-grow: 0.5; width: -284px;" />
+    </AnimationThirdSampleDocument>
+</ui:UXML>

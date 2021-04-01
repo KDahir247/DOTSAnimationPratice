@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 782f629a2df6243629ea8fe2873666a4, type: 3}
-  m_Name: AnimationFirstSample
+  m_Name: AnimationProperties
   m_EditorClassIdentifier: 
   themeUss: {fileID: 11400000, guid: f567955c754d54a108d615cb51ccbf2f, type: 2}
   m_TargetTexture: {fileID: 0}

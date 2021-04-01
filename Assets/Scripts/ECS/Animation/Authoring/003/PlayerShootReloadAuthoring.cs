@@ -20,7 +20,6 @@ public class PlayerShootReloadAuthoring : MonoBehaviour, IConvertGameObjectToEnt
 
         animationClips[0] = ShootingClip;
         animationClips[1] = ReloadingClip;
-
         DynamicBuffer<ShootReload_PlayClipBuffer> clipBuffer = dstManager.AddBuffer<ShootReload_PlayClipBuffer>(entity);
         for (byte i = 0; i < animationClips.Length; i++)
             clipBuffer.Add(new ShootReload_PlayClipBuffer(){Clip =  animationClips[i].ToDenseClip()});

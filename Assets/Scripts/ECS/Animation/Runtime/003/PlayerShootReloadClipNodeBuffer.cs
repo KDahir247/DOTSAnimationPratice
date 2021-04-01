@@ -2,7 +2,7 @@
 using Unity.DataFlowGraph;
 using Unity.Entities;
 
-public struct PlayerShootReloadDataAssetRuntime : ISystemStateBufferElementData
+public struct PlayerShootReloadClipNodeBuffer : ISystemStateBufferElementData
 {
 	public NodeHandle<ClipPlayerNode> ClipNode;
 }

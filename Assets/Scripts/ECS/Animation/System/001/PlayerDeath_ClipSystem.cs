@@ -48,7 +48,8 @@ public class PlayerDeath_ClipSystem : SystemBase
 		if (_graphSystem == null)
 			return;
 
-		_graphSystem.RemoveRef();
+		if(_graphSystem.RefCount > 0)
+			_graphSystem.RemoveRef();
 		//_graphSystem.Dispose();
 
 		base.OnDestroy();
@@ -109,7 +110,7 @@ public class PlayerDeath_ClipSystem : SystemBase
 
 		NodeSet set = graphSystem.Set;
 		set.Connect(entityNode,deltaTimeNode,ConvertDeltaTimeToFloatNode.KernelPorts.Input);
-		set.Connect(deltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Output,data.ClipPlayerNode,ClipPlayerNode.KernelPorts.DeltaTime);
+		set.Connect(deltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float,data.ClipPlayerNode,ClipPlayerNode.KernelPorts.DeltaTime);
 		set.Connect(data.ClipPlayerNode, ClipPlayerNode.KernelPorts.Output,entityNode, NodeSetAPI.ConnectionType.Feedback);
 		
 		set.SetData(data.ClipPlayerNode, ClipPlayerNode.KernelPorts.Speed, 1.0f);

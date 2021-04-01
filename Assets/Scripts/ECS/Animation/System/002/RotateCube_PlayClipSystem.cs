@@ -130,7 +130,7 @@ public class RotateCube_PlayClipSystem : SystemBase
 		//Connect the entityNode to the deltaNode and pass the DeltaTime Input (struct) to the deltaNode.
 		set.Connect(entityNode, deltaNode, ConvertDeltaTimeToFloatNode.KernelPorts.Input);
 		//Connect the deltaNode to the ClipPlayerNode and pass the DeltaTime output (float) to the ClipPlayerNode and assign it to the DeltaTime in the ClipPlayerNode.
-		set.Connect(deltaNode, ConvertDeltaTimeToFloatNode.KernelPorts.Output, data.NodeHandle, ClipPlayerNode.KernelPorts.DeltaTime);
+		set.Connect(deltaNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float, data.NodeHandle, ClipPlayerNode.KernelPorts.DeltaTime);
 		//Connect the clipPlayer node to the EntityNode and passes the Output of the ClipPlayerNode
 		//We must pass a enum under NodeSet API Connection type which allows feeding information back to an upstream node without forming a cycle
 		set.Connect(data.NodeHandle, ClipPlayerNode.KernelPorts.Output,entityNode, NodeSetAPI.ConnectionType.Feedback);

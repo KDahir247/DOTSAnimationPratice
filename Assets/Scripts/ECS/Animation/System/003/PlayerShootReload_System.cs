@@ -98,7 +98,7 @@ public class PlayerShootReload_System : SystemBase
 	private void CreateGraph(Entity e, ref Rig rig, ProcessDefaultAnimationGraph graphSystem)
 	{
 		if (!EntityManager.HasComponent<ShootReload_PlayClipBuffer>(e))
-			throw new InvalidExpressionException("Entity missing PlayerShootReloadDataAssetRuntime");
+			return;
 
 		EntityCommandBuffer ecb = _endSimulationEntityCommandBufferSystem.CreateCommandBuffer();
 
@@ -113,18 +113,18 @@ public class PlayerShootReload_System : SystemBase
 		NativeArray<NodeHandle<ClipPlayerNode>> clipPlayerNodes = new NativeArray<NodeHandle<ClipPlayerNode>>(clipBuffer.Length, Allocator.Temp);
 
 		data.MixerNode = set.Create<MixerNode>();
-
+		
 		clipPlayerNodes[0] = set.Create<ClipPlayerNode>();
 		clipPlayerNodes[1] = set.Create<ClipPlayerNode>();
-
 		set.SetData(clipPlayerNodes[0], ClipPlayerNode.KernelPorts.Speed, 1.0f);
 		set.SetData(clipPlayerNodes[1], ClipPlayerNode.KernelPorts.Speed, 1.0f);
 
 		set.Connect(data.ComponentNode, data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Input);
-		set.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Output, clipPlayerNodes[0], ClipPlayerNode.KernelPorts.DeltaTime);
-		set.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Output, clipPlayerNodes[1],ClipPlayerNode.KernelPorts.DeltaTime);
+		set.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float, clipPlayerNodes[0], ClipPlayerNode.KernelPorts.DeltaTime);
+		set.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float, clipPlayerNodes[1],ClipPlayerNode.KernelPorts.DeltaTime);
 		set.Connect(clipPlayerNodes[0], ClipPlayerNode.KernelPorts.Output, data.MixerNode, MixerNode.KernelPorts.Input0);
 		set.Connect(clipPlayerNodes[1], ClipPlayerNode.KernelPorts.Output, data.MixerNode, MixerNode.KernelPorts.Input1);
+		//set.Connect(set.Create<BlendNode>(), BlendNode.KernelPorts.Weight, data.MixerNode, MixerNode.KernelPorts.Weight);
 		set.Connect(data.MixerNode, MixerNode.KernelPorts.Output, data.ComponentNode,
 			NodeSetAPI.ConnectionType.Feedback);
 
@@ -137,28 +137,28 @@ public class PlayerShootReload_System : SystemBase
 		set.SendMessage(clipPlayerNodes[0], ClipPlayerNode.SimulationPorts.Clip, clipBuffer[0].Clip);
 		set.SendMessage(clipPlayerNodes[1], ClipPlayerNode.SimulationPorts.Clip, clipBuffer[1].Clip);
 		set.SendMessage(data.MixerNode, MixerNode.SimulationPorts.Rig, rig);
-		set.SetData(data.MixerNode, MixerNode.KernelPorts.Weight, 0f);
-
-		DynamicBuffer<PlayerShootReloadDataAssetRuntime> clipNodeBuffer = ecb.AddBuffer<PlayerShootReloadDataAssetRuntime>(e);
-		for (byte i = 0; i < clipPlayerNodes.Length; i++) clipNodeBuffer.Add(new PlayerShootReloadDataAssetRuntime() {ClipNode = clipPlayerNodes[i]});
+		set.SetData(data.MixerNode, MixerNode.KernelPorts.Weight,0);
+		
+		DynamicBuffer<PlayerShootReloadClipNodeBuffer> clipNodeBuffer = ecb.AddBuffer<PlayerShootReloadClipNodeBuffer>(e);
+		for (byte i = 0; i < clipPlayerNodes.Length; i++) clipNodeBuffer.Add(new PlayerShootReloadClipNodeBuffer() {ClipNode = clipPlayerNodes[i]});
 
 		ecb.AddComponent(e, data);
 	}
 
 	private  void DestroyGraph(Entity e, ProcessDefaultAnimationGraph graphSystem, ref PlayerShootReloadDataRuntime data)
 	{
-		if(!EntityManager.HasComponent<PlayerShootReloadDataAssetRuntime>(e))
+		if(!EntityManager.HasComponent<PlayerShootReloadClipNodeBuffer>(e))
 			throw new InvalidExpressionException("entity missing PlayerShootReloadDataAssetRuntime");
 
 		NodeSet set = graphSystem.Set;
 
-		DynamicBuffer<PlayerShootReloadDataAssetRuntime> clipNodeBuffer =
-			EntityManager.GetBuffer<PlayerShootReloadDataAssetRuntime>(e);
+		DynamicBuffer<PlayerShootReloadClipNodeBuffer> clipNodeBuffer =
+			EntityManager.GetBuffer<PlayerShootReloadClipNodeBuffer>(e);
 
 		for (byte i = 0; i < clipNodeBuffer.Length; i++)
 			set.Destroy(clipNodeBuffer[i].ClipNode);
 
-		EntityManager.RemoveComponent<PlayerShootReloadDataAssetRuntime>(e);
+		EntityManager.RemoveComponent<PlayerShootReloadClipNodeBuffer>(e);
 
 		set.Destroy(data.ComponentNode);
 		set.Destroy(data.DeltaTimeNode);
