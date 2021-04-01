@@ -6,6 +6,8 @@ Going to learn intermediate to advance feature such as blending, remapping, blen
 The current version I'm using is com.unity.animation  0.9.0-preview.6. 
 with URP + Hybrid as the rendering.
 <br/>
+Creating and Destroying animation graph seems like they must happen on the main thread.
+<br/>
 <br/>
 001 Single clip animation executing on GPU Hybrid Ecs and Pure Ecs. 
 <br/>
@@ -19,3 +21,6 @@ with URP + Hybrid as the rendering.
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/003.gif)
 <br/>
+004 Two clip animation that uses a mixerNode to blend animations from on clip to another. Blending is handled by a seperate aniamtion kernel node and is fed to the MixerNode blend value in the MixerNode KernelPort. The UI update the component value from there the BlendNode retrieve the component and feed it to the MixerNode. This method seem better (performance) due do kernel node utilizing both Jobs and the burst compiler, while changing the MixerNode data directly can't use either the burst compiler and jobs due to structual changes and needing NodeSet (Reference).
+<br/>
+[![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/004.gif)
