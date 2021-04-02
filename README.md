@@ -21,6 +21,13 @@ Creating and Destroying animation graph seems like they must happen on the main 
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/003.gif)
 <br/>
-004 Two clip animation that uses a mixerNode to blend animations from on clip to another. Blending is handled by a seperate aniamtion kernel node and is fed to the MixerNode blend value in the MixerNode KernelPort. The UI update the component value from there the BlendNode retrieve the component and feed it to the MixerNode. This method seem better (performance) due do kernel node utilizing both Jobs and the burst compiler, while changing the MixerNode data directly can't use either the burst compiler and jobs due to structual changes and needing NodeSet (Reference).
+004 Two clip animation that uses a mixerNode to blend animations from on clip to another. Blending is handled by a seperate animation kernel node and is fed to the MixerNode blend value in the MixerNode KernelPort. The UI update the component value from there the BlendNode retrieve the component and feed it to the MixerNode. This method seem better (performance) due do kernel node utilizing both Jobs and the burst compiler, while changing the MixerNode data directly can't use either the burst compiler and jobs due to structual changes and needing NodeSet (Reference).
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/004.gif)
+<br/>
+005 BlendTree for blending three animation together walk, run, sprint.
+<br/>
+BlendTree are better then working with raw animation clip since it let you create complex behaviour such as blendtree that blend blendtree, also it support 5 blend type (1D, 2D simple directional, 2D freeform directional, 2D freeform cartesian, and direct ). BlendNode handle setting up mixer node or anyother node to work and connecting them and destroying them.
+<br/>
+[![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/005.gif)
+<br/>
