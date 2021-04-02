@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Base_Panel" style="flex-grow: 1;">
+        <ui:VisualElement name="Header_Panel" style="flex-grow: 0.15; flex-direction: row;">
+            <ui:Label text="Hold Up Arrow / W to blend to run then sprint&#10;Hold Down Arrow / S to blend to Run then walk&#10;" display-tooltip-when-elided="true" name="Information_Text" style="font-size: 47px; color: rgba(255, 255, 255, 255); background-color: rgb(94, 94, 94); flex-shrink: 1; border-top-left-radius: 59px; border-bottom-left-radius: 59px; border-top-right-radius: 59px; border-bottom-right-radius: 59px; border-left-width: 15px; border-right-width: 15px; border-top-width: 15px; border-bottom-width: 15px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

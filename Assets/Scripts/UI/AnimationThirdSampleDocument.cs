@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class AnimationThirdSampleDocument : VisualElement
 {
 	private Slider _blendSlider;
+
 	public AnimationThirdSampleDocument()
 	{
 		RegisterCallback<GeometryChangedEvent>(UIQuery);
@@ -23,14 +24,15 @@ public class AnimationThirdSampleDocument : VisualElement
 	private void BlendSliderChange([NotNull] ChangeEvent<float> changeEvent)
 	{
 		//Send A Message
-		EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-		var satisfiedEntities= entityManager.CreateEntityQuery(typeof(PlayerBlendClipBuffer)).ToEntityArray(Allocator.Temp);
+		var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+		var satisfiedEntities =
+			entityManager.CreateEntityQuery(typeof(PlayerBlendClipBuffer)).ToEntityArray(Allocator.Temp);
 		//Update it
-		foreach (Entity entity in satisfiedEntities)
+		foreach (var entity in satisfiedEntities)
 		{
-			if(!entityManager.HasComponent<PlayerBlendKernelRuntime>(entity)) continue;
+			if (!entityManager.HasComponent<PlayerBlendKernelRuntime>(entity)) continue;
 
-			PlayerBlendKernelRuntime data = entityManager.GetComponentData<PlayerBlendKernelRuntime>(entity);
+			var data = entityManager.GetComponentData<PlayerBlendKernelRuntime>(entity);
 			data.BlendAmount = changeEvent.newValue;
 			entityManager.SetComponentData(entity, data);
 		}
@@ -40,7 +42,7 @@ public class AnimationThirdSampleDocument : VisualElement
 	{
 	}
 
-	public new class UxmlTraits : VisualElement.UxmlTraits
+	public new sealed class UxmlTraits : VisualElement.UxmlTraits
 	{
 	}
 }

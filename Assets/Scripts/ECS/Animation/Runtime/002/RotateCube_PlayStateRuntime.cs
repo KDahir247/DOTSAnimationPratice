@@ -4,6 +4,7 @@ using Unity.Entities;
 
 public struct RotateCube_PlayStateRuntime : IComponentData
 {
-	public GraphHandle GraphHandle;
 	public NodeHandle<ClipPlayerNode> NodeHandle;
+	public NodeHandle<ConvertDeltaTimeToFloatNode> DeltaTimeNode;
+	public NodeHandle<ComponentNode> EntityNode;
 }

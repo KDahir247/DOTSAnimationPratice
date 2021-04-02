@@ -3,5 +3,4 @@
 public struct PlayerBlendKernelRuntime : IComponentData
 {
 	public float BlendAmount;
-
 }

@@ -3,31 +3,30 @@ using Unity.Entities;
 using UnityEngine;
 
 [ConverterVersion("Blend1DShootReload", 1)]
-public class PlayerShootReloadAuthoring : MonoBehaviour, IConvertGameObjectToEntity
+public sealed class PlayerShootReloadAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
-    [SerializeField]
-    private AnimationClip ShootingClip;
-    [SerializeField]
-    private AnimationClip ReloadingClip;
+	[SerializeField] private AnimationClip ShootingClip;
 
-    private AnimationClip[] animationClips = new AnimationClip[2];
+	[SerializeField] private AnimationClip ReloadingClip;
 
-    //Play the shooting around 10 times then reload
-    public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
-    {
-        if (ShootingClip == null || ReloadingClip == null)
-            return;
+	private readonly AnimationClip[] animationClips = new AnimationClip[2];
 
-        animationClips[0] = ShootingClip;
-        animationClips[1] = ReloadingClip;
-        DynamicBuffer<ShootReload_PlayClipBuffer> clipBuffer = dstManager.AddBuffer<ShootReload_PlayClipBuffer>(entity);
-        for (byte i = 0; i < animationClips.Length; i++)
-            clipBuffer.Add(new ShootReload_PlayClipBuffer(){Clip =  animationClips[i].ToDenseClip()});
+	//Play the shooting around 10 times then reload
+	public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+	{
+		if (ShootingClip == null || ReloadingClip == null)
+			return;
 
-        dstManager.AddComponent<DeltaTimeRuntime>(entity);
+		animationClips[0] = ShootingClip;
+		animationClips[1] = ReloadingClip;
+		var clipBuffer = dstManager.AddBuffer<ShootReload_PlayClipBuffer>(entity);
+		for (byte i = 0; i < animationClips.Length; i++)
+			clipBuffer.Add(new ShootReload_PlayClipBuffer {Clip = animationClips[i].ToDenseClip()});
 
-        dstManager.AddComponent<PlayerShootReloadRuntime>(entity);
+		dstManager.AddComponent<DeltaTimeRuntime>(entity);
 
-        dstManager.AddComponent<PlayerShootReloadTimerRuntime>(entity);
-    }
+		dstManager.AddComponent<PlayerShootReloadRuntime>(entity);
+
+		dstManager.AddComponent<PlayerShootReloadTimerRuntime>(entity);
+	}
 }

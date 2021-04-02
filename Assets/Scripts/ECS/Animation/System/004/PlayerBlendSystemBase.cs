@@ -4,13 +4,13 @@ using Unity.Entities;
 [UpdateBefore(typeof(DefaultAnimationSystemGroup))]
 public abstract class PlayerBlendSystemBase : SystemBase
 {
-	protected ProcessDefaultAnimationGraph graphSystem;
+	protected ProcessDefaultAnimationGraph GraphSystem;
 	//protected EndSimulationEntityCommandBufferSystem _ecbSystem;
 
 	protected sealed override void OnCreate()
 	{
 		base.OnCreate();
-		graphSystem = World.GetOrCreateSystem<ProcessDefaultAnimationGraph>();
+		GraphSystem = World.GetOrCreateSystem<ProcessDefaultAnimationGraph>();
 		//_ecbSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
 	}
 
@@ -21,7 +21,8 @@ public abstract class PlayerBlendSystemBase : SystemBase
 		//Create if it has non of both PlayerBlendNodeBuffer and PlayerClipDataRuntime.
 		//Currently creating graphs and node set must happen on main thread and it causes structural change
 		Entities
-			.WithNone<PlayerBlendClipNodeBuffer, PlayerBlendDataRuntime>() //must not have or else the graph is already created
+			.WithNone<PlayerBlendClipNodeBuffer, PlayerBlendDataRuntime
+			>() //must not have or else the graph is already created
 			.WithoutBurst()
 			.WithStructuralChanges()
 			.ForEach((Entity e, ref Rig rig, in PlayerBlendKernelRuntime kernelBlendNode)
@@ -39,11 +40,17 @@ public abstract class PlayerBlendSystemBase : SystemBase
 
 	protected sealed override void OnDestroy()
 	{
-		if (graphSystem == null)
+		if (GraphSystem == null)
 			return;
 
-		if(graphSystem.RefCount > 0)
-			graphSystem.RemoveRef();
+		Entities
+			.WithoutBurst()
+			.WithStructuralChanges()
+			.ForEach((Entity e, ref PlayerBlendDataRuntime playerBlendData) => DestroyGraph(e, ref playerBlendData))
+			.Run();
+
+		if (GraphSystem.RefCount > 0)
+			GraphSystem.RemoveRef();
 
 		base.OnDestroy();
 	}

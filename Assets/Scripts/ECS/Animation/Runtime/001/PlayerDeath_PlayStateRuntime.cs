@@ -4,6 +4,7 @@ using Unity.Entities;
 
 public struct PlayerDeath_PlayStateRuntime : IComponentData
 {
-	public GraphHandle Graph;
 	public NodeHandle<ClipPlayerNode> ClipPlayerNode;
+	public NodeHandle<ConvertDeltaTimeToFloatNode> DeltaTimeNode;
+	public NodeHandle<ComponentNode> EntityNode;
 }

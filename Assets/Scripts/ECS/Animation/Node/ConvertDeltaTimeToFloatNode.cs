@@ -13,7 +13,6 @@ public sealed class ConvertDeltaTimeToFloatNode : KernelNodeDefinition<ConvertDe
 	[StructLayout(LayoutKind.Sequential, Size = 1)]
 	public struct KernelData : IKernelData
 	{
-
 	}
 
 	[BurstCompile]
@@ -25,5 +24,3 @@ public sealed class ConvertDeltaTimeToFloatNode : KernelNodeDefinition<ConvertDe
 		}
 	}
 }
-
-

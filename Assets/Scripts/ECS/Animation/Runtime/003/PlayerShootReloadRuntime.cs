@@ -1,5 +1,4 @@
-﻿
-using Unity.Entities;
+﻿using Unity.Entities;
 
 public struct PlayerShootReloadRuntime : IComponentData
 {
