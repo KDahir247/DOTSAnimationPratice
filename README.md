@@ -25,7 +25,7 @@ Creating and Destroying animation graph seems like they must happen on the main 
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/004.gif)
 <br/>
-005 BlendTree for blending three animation together walk, run, sprint.
+005 1D BlendTree for blending three animation together walk, run, sprint.
 <br/>
 BlendTree are better then working with raw animation clip since it let you create complex behaviour such as blendtree that blend blendtree, also it support 5 blend type (1D, 2D simple directional, 2D freeform directional, 2D freeform cartesian, and direct ). BlendNode handle setting up mixer node or anyother node to work and connecting them and destroying them.
 <br/>
