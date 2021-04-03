@@ -22,25 +22,31 @@ public sealed class BlendTree1DSystem : BlendTree1DSystemBase
 		};
 
 		//Connected Node
-		nodeSet.Connect(data.ComponentNode, data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Input);
+		nodeSet.Connect(data.ComponentNode, data.DeltaTimeNode,
+			ConvertDeltaTimeToFloatNode.KernelPorts
+				.Input); //Connect the ComponentNode to the DeltaTime and passes update on component to DeltaTimeNode input
 		nodeSet.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float, data.TimeCounterNode,
-			TimeCounterNode.KernelPorts.DeltaTime);
+			TimeCounterNode.KernelPorts
+				.DeltaTime); //DeltaTime Node passes the deltaTime (float) output to TimeCounterNode Input Time
 		nodeSet.Connect(data.TimeCounterNode, TimeCounterNode.KernelPorts.Time, data.TimeLoopNode,
-			TimeLoopNode.KernelPorts.InputTime);
+			TimeLoopNode.KernelPorts
+				.InputTime); //TimeCounter Node passes The Time outpit to the TimeLoopNode InputTime input
 		nodeSet.Connect(data.TimeLoopNode, TimeLoopNode.KernelPorts.OutputTime, data.BlendTreeNode,
-			BlendTree1DNode.KernelPorts.NormalizedTime);
+			BlendTree1DNode.KernelPorts
+				.NormalizedTime); //TimeLoopNode passes the OutputTime output to the BlendTreeNode normalizedTime Input
 
 		nodeSet.Connect(data.BlendTreeNode, BlendTree1DNode.KernelPorts.Duration, data.FloatRcpNode,
-			FloatRcpNode.KernelPorts.Input);
+			FloatRcpNode.KernelPorts.Input); //BlendTreeNode passes the Duration output to the FloatRcpNode Input
 		nodeSet.Connect(data.FloatRcpNode, FloatRcpNode.KernelPorts.Output, data.TimeCounterNode,
-			TimeCounterNode.KernelPorts.Speed);
+			TimeCounterNode.KernelPorts.Speed); //FloatRcpNode passes the output to the TimeCounterNode Speed Input
 
 		nodeSet.Connect(data.BlendTreeNode, BlendTree1DNode.KernelPorts.Output, data.ComponentNode,
 			NodeSetAPI.ConnectionType.Feedback);
 		nodeSet.Connect(data.ComponentNode, data.InputNode, Blend1DExtractParameterNode.KernelPorts.Input,
 			NodeSetAPI.ConnectionType.Feedback);
 		nodeSet.Connect(data.InputNode, Blend1DExtractParameterNode.KernelPorts.Output, data.BlendTreeNode,
-			BlendTree1DNode.KernelPorts.BlendParameter);
+			BlendTree1DNode.KernelPorts
+				.BlendParameter); //InputNode passes the Output to the BlendTreeNode BlendParameter output
 
 		//Send Message to Update Node param
 		nodeSet.SendMessage(data.TimeLoopNode, TimeLoopNode.SimulationPorts.Duration, 1.0f);

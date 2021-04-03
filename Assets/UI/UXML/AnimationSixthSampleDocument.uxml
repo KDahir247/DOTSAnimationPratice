@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Core_Panel" style="flex-direction: row; flex-grow: 1;">
+        <ui:VisualElement name="LHS_Panel" style="flex-grow: 0.5;">
+            <ui:Label text="Press Up, Down, Left, or Right arrow to&#10;move the character to the direction on the arrow." display-tooltip-when-elided="true" name="Intro_Label" enable-rich-text="true" style="background-color: rgb(96, 96, 96); font-size: 40px; margin-right: 1155px; flex-grow: 0.2; -unity-font-style: bold; color: rgba(243, 243, 243, 255); border-left-width: 30px; border-top-width: 0; border-top-left-radius: 130px; border-bottom-left-radius: 130px; border-top-right-radius: 130px; border-bottom-right-radius: 130px; -unity-text-align: middle-left;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RHS_Panel" style="flex-grow: 0.5;" />
+    </ui:VisualElement>
+</ui:UXML>

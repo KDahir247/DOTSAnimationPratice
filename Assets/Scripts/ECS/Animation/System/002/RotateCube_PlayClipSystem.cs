@@ -45,8 +45,9 @@ public sealed class RotateCube_PlayClipSystem : SystemBase
 			.WithChangeFilter<RotateCube_PlayClipRuntime>()
 			.WithoutBurst()
 			.ForEach(
-				(Entity e, ref RotateCube_PlayClipRuntime animation, ref RotateCube_PlayStateRuntime animationState) => _animationGraphSystem.Set.SendMessage(animationState.NodeHandle,
-					ClipPlayerNode.SimulationPorts.Clip, animation.clip)).Run();
+				(Entity e, ref RotateCube_PlayClipRuntime animation, ref RotateCube_PlayStateRuntime animationState) =>
+					_animationGraphSystem.Set.SendMessage(animationState.NodeHandle,
+						ClipPlayerNode.SimulationPorts.Clip, animation.clip)).Run();
 
 		var pingPongTime = math.sin((float) World.Unmanaged.CurrentTime.ElapsedTime) * .5f + .5f;
 		Entities

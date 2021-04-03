@@ -147,7 +147,8 @@ public sealed class PlayerShootReload_System : SystemBase
 		ecb.AddComponent(e, data);
 	}
 
-	private void DestroyGraph(Entity e, [NotNull] ProcessDefaultAnimationGraph graphSystem, ref PlayerShootReloadDataRuntime data)
+	private void DestroyGraph(Entity e, [NotNull] ProcessDefaultAnimationGraph graphSystem,
+		ref PlayerShootReloadDataRuntime data)
 	{
 		if (!EntityManager.HasComponent<PlayerShootReloadClipNodeBuffer>(e))
 			throw new InvalidExpressionException("entity missing PlayerShootReloadDataAssetRuntime");
