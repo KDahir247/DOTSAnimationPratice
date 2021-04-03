@@ -31,3 +31,8 @@ BlendTree are better then working with raw animation clip since it let you creat
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/005.gif)
 <br/>
+006 2D Simple Direction BlendTree for blending a 8 way plus an idle animation
+<br/>
+[![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/006.gif)
+<br/>
+
