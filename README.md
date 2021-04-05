@@ -35,4 +35,7 @@ BlendTree are better then working with raw animation clip since it let you creat
 <br/>
 [![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/006.gif)
 <br/>
-
+007 Rig Remapping to correctly play animation.
+<br/>
+[![me](https://github.com/KDahir247/DOTSAnimationPratice/blob/main/Assets/Gif/007.gif)
+<br/>
