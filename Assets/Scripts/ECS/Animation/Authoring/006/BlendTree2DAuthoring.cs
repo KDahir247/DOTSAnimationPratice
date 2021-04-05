@@ -58,5 +58,6 @@ public sealed class BlendTree2DAuthoring : MonoBehaviour, IConvertGameObjectToEn
 		dstManager.AddComponentData(entity, blendTree2DParam);
 
 		dstManager.AddComponent<DeltaTimeRuntime>(entity);
+		dstManager.AddComponent<ProcessDefaultAnimationGraph.AnimatedRootMotion>(entity);
 	}
 }

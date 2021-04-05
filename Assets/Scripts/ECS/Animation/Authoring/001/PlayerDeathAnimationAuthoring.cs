@@ -7,7 +7,6 @@ public sealed class PlayerDeathAnimationAuthoring : MonoBehaviour, IConvertGameO
 {
 	public AnimationClip clip;
 
-
 	public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
 	{
 		if (clip == null)

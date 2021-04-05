@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Header_Panel" style="flex-grow: 0.2;">
+        <ui:Label text="Rig Remap" display-tooltip-when-elided="true" name="Title_Label" style="flex-grow: 1; -unity-text-align: middle-center; color: rgb(0, 0, 0); font-size: 79px; -unity-font-style: bold;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Body_Panel" style="flex-grow: 0.8; flex-direction: row;">
+        <ui:VisualElement name="LHS_Panel" style="flex-grow: 0.5;">
+            <ui:Label text="Enable" display-tooltip-when-elided="true" name="Enabled_Label" style="flex-grow: 0.3; -unity-text-align: upper-center; color: rgba(0, 255, 6, 255); font-size: 70px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RHS_Panel" style="flex-grow: 0.5;">
+            <ui:Label text="Disable" display-tooltip-when-elided="true" name="Disable_Label" style="-unity-text-align: upper-center; font-size: 70px; color: rgba(255, 0, 66, 255); -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

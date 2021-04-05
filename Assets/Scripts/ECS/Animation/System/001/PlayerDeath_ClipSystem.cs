@@ -2,6 +2,8 @@
 using Unity.Animation;
 using Unity.DataFlowGraph;
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 
 [UpdateBefore(typeof(DefaultAnimationSystemGroup))]
 public sealed class PlayerDeath_ClipSystem : SystemBase
@@ -59,7 +61,6 @@ public sealed class PlayerDeath_ClipSystem : SystemBase
 		set.Destroy(data.EntityNode);
 		set.Destroy(data.DeltaTimeNode);
 		set.Destroy(data.ClipPlayerNode);
-
 		EntityManager.RemoveComponent<PlayerDeath_PlayStateRuntime>(entity);
 	}
 
@@ -106,22 +107,24 @@ public sealed class PlayerDeath_ClipSystem : SystemBase
 	}
 
 
-	private static PlayerDeath_PlayStateRuntime CreateGraph(Entity entity,
+	private  PlayerDeath_PlayStateRuntime CreateGraph(Entity entity,
 		[NotNull] ProcessDefaultAnimationGraph graphSystem,
 		ref Rig rig, ref PlayerDeath_PlayClipRuntime animation)
 	{
 		var set = graphSystem.Set;
+	
 
 		var data = new PlayerDeath_PlayStateRuntime
 		{
 			ClipPlayerNode = set.Create<ClipPlayerNode>(),
 			DeltaTimeNode = set.Create<ConvertDeltaTimeToFloatNode>(),
-			EntityNode = set.CreateComponentNode(entity)
+			EntityNode = set.CreateComponentNode(entity),
 		};
 
 		set.Connect(data.EntityNode, data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Input);
 		set.Connect(data.DeltaTimeNode, ConvertDeltaTimeToFloatNode.KernelPorts.Float, data.ClipPlayerNode,
 			ClipPlayerNode.KernelPorts.DeltaTime);
+
 		set.Connect(data.ClipPlayerNode, ClipPlayerNode.KernelPorts.Output, data.EntityNode,
 			NodeSetAPI.ConnectionType.Feedback);
 

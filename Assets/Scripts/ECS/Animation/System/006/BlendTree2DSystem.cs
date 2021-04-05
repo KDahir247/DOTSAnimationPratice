@@ -1,11 +1,14 @@
 ﻿using Unity.Animation;
 using Unity.DataFlowGraph;
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 
 public sealed class BlendTree2DSystem : BlendTree2DSystemBase
 {
 	protected override void CreateGraph(Entity entity, ref Rig rig, ref BlendTree2DRuntime blendTreeData)
 	{
+		CreateDebugBoneRig(entity, ref rig);
 		var ecb = EsBufferSystem.CreateCommandBuffer();
 
 		//Create graph and hook up node a set send message to the correct node
@@ -54,6 +57,20 @@ public sealed class BlendTree2DSystem : BlendTree2DSystemBase
 
 		//Add the kernelData to this entity
 		ecb.AddComponent(entity, kernelData);
+	}
+
+	private void CreateDebugBoneRig(Entity entity, ref Rig rig)
+	{
+		var ecb = EsBufferSystem.CreateCommandBuffer();
+
+		var debugEntityRig = RigUtils.InstantiateDebugRigEntity(rig.Value, EntityManager,
+			new BoneRendererProperties
+			{
+				BoneShape = BoneRendererUtils.BoneShape.Line, Color = new float4(0, 1, 0, 1), Size = 1
+			});
+
+		ecb.AddComponent(debugEntityRig, new LocalToParent {Value = float4x4.identity});
+		ecb.AddComponent(debugEntityRig, new Parent {Value = entity});
 	}
 
 	protected override void DestroyGraph(Entity entity, ref BlendTree2DKernelRuntime nodeHandle)

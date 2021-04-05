@@ -123,6 +123,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &67066420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67066422}
+  - component: {fileID: 67066421}
+  m_Layer: 0
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &67066421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67066420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c074d86024caca2a0034ce4f53f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 1b4201111124e5d459d2e7a58bfe17b3, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 7ce7036d22f52e348a2f835eaeeb4569, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &67066422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67066420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &173318109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,8 +702,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendTree: {fileID: 20600000, guid: 4f3c0aaaa0df3ed4f8e612d577fc387a, type: 2}
   paramStep:
-    x: 0.03
-    y: 0.03
+    x: 0.02
+    y: 0.02
+--- !u!114 &173318182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173318110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d52c1de4f76b1545946555cfe16e162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RenderBones: 1
+  BoneShape: 0
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Size: 1
+  BoneMaterial: {fileID: 0}
+  RigComponent: {fileID: 173318180}
+  Transforms: []
 --- !u!1 &919545110
 GameObject:
   m_ObjectHideFlags: 0
